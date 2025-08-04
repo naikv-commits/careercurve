@@ -1,61 +1,183 @@
-**Add your own guidelines here**
-<!--
+# CareerCurve Mobile App - UX Design Guidelines
 
-System Guidelines
+## Overview
+CareerCurve is a mobile-first career development and mentoring platform designed to help users grow their professional skills through 1-on-1 sessions, mock interviews, and personalized career guidance.
 
-Use this file to provide the AI with rules and guidelines you want it to follow.
-This template outlines a few examples of things you can add. You can add your own sections and format it to suit your needs
+## Core UX Principles
 
-TIP: More context isn't always better. It can confuse the LLM. Try and add the most important rules you need
+### 1. Mobile-First Design
+- Design for thumb navigation and one-handed use
+- Optimize for 375px-414px screen widths primarily
+- Ensure touch targets are minimum 44px × 44px
+- Keep primary actions within thumb reach (bottom 2/3 of screen)
 
-# General guidelines
+### 2. Progressive Disclosure
+- Show only essential information on first view
+- Use expandable sections for detailed content
+- Implement step-by-step flows for complex tasks
+- Provide clear entry and exit points
 
-Any general rules you want the AI to follow.
-For example:
+### 3. Immediate Value
+- Surface user progress and achievements prominently
+- Show next recommended actions based on user goals
+- Provide quick access to frequently used features
+- Display upcoming sessions and deadlines clearly
 
-* Only use absolute positioning when necessary. Opt for responsive and well structured layouts that use flexbox and grid by default
-* Refactor code as you go to keep code clean
-* Keep file sizes small and put helper functions and components in their own files.
+### 4. Trust and Safety
+- Use clear, professional language throughout
+- Show mentor credentials and ratings
+- Provide transparent pricing and booking policies
+- Include user reviews and testimonials
 
---------------
+## Design System Guidelines
 
-# Design system guidelines
-Rules for how the AI should make generations look like your company's design system
+### Typography
+- **Primary Font Size**: 16px (default for better readability)
+- **Headers**: Use font weights 600-700 for emphasis
+- **Body Text**: Use font weight 400, line-height 1.5
+- **Helper Text**: 14px, muted foreground color
+- **Accessibility**: Minimum 14px for all text, 16px for form inputs
 
-Additionally, if you select a design system to use in the prompt box, you can reference
-your design system's components, tokens, variables and components.
-For example:
+### Color Palette
+- **Primary**: Dark theme (#030213) for trust and professionalism
+- **Success**: Green variants for completed actions and achievements
+- **Warning**: Orange variants for pending/upcoming items
+- **Destructive**: Red variants for errors and critical actions
+- **Muted**: Gray variants for secondary information
 
-* Use a base font-size of 14px
-* Date formats should always be in the format “Jun 10”
-* The bottom toolbar should only ever have a maximum of 4 items
-* Never use the floating action button with the bottom toolbar
-* Chips should always come in sets of 3 or more
-* Don't use a dropdown if there are 2 or fewer options
+### Spacing System
+- **Base Unit**: 4px (0.25rem)
+- **Component Padding**: 16px (1rem) standard
+- **Section Spacing**: 24px (1.5rem) between major sections
+- **Card Spacing**: 12px (0.75rem) between cards
+- **Icon Spacing**: 8px (0.5rem) from text
 
-You can also create sub sections and add more specific details
-For example:
+### Component Guidelines
 
+#### Cards
+- Use subtle borders and shadows for depth
+- Maintain consistent 16px internal padding
+- Include hover states for interactive cards
+- Apply 8px border radius for modern appearance
 
-## Button
-The Button component is a fundamental interactive element in our design system, designed to trigger actions or navigate
-users through the application. It provides visual feedback and clear affordances to enhance user experience.
+#### Buttons
+- **Primary**: Full-width for main actions
+- **Secondary**: Outlined style for alternative actions
+- **Ghost**: Text-only for less important actions
+- **Icon Buttons**: 40px × 40px minimum touch target
 
-### Usage
-Buttons should be used for important actions that users need to take, such as form submissions, confirming choices,
-or initiating processes. They communicate interactivity and should have clear, action-oriented labels.
+#### Navigation
+- **Bottom Navigation**: Maximum 5 items
+- **Tab Bar**: Use icons with labels for clarity
+- **Back Navigation**: Always provide clear exit paths
+- **Breadcrumbs**: For multi-step processes
 
-### Variants
-* Primary Button
-  * Purpose : Used for the main action in a section or page
-  * Visual Style : Bold, filled with the primary brand color
-  * Usage : One primary button per section to guide users toward the most important action
-* Secondary Button
-  * Purpose : Used for alternative or supporting actions
-  * Visual Style : Outlined with the primary color, transparent background
-  * Usage : Can appear alongside a primary button for less important actions
-* Tertiary Button
-  * Purpose : Used for the least important actions
-  * Visual Style : Text-only with no border, using primary color
-  * Usage : For actions that should be available but not emphasized
--->
+## Interaction Patterns
+
+### Loading States
+- Use skeleton screens for content loading
+- Show progress indicators for multi-step processes
+- Provide immediate feedback for user actions
+- Display estimated wait times when known
+
+### Gestures
+- **Pull to Refresh**: For updating feeds and lists
+- **Swipe Actions**: For quick actions on list items
+- **Long Press**: For context menus and shortcuts
+- **Pinch to Zoom**: For images and detailed content
+
+### Feedback
+- **Success States**: Green checkmarks and positive messaging
+- **Error States**: Clear error messages with suggested actions
+- **Empty States**: Helpful illustrations with next steps
+- **Offline States**: Clear indication and offline capabilities
+
+## Accessibility Guidelines
+
+### WCAG 2.1 Compliance
+- Minimum contrast ratio of 4.5:1 for normal text
+- Minimum contrast ratio of 3:1 for large text
+- Support for screen readers with proper ARIA labels
+- Keyboard navigation support for all interactive elements
+
+### Inclusive Design
+- Support for various screen sizes and orientations
+- Consider users with motor impairments (larger touch targets)
+- Provide alternative text for all images
+- Use clear, simple language throughout
+
+## User Flow Principles
+
+### Onboarding
+- Keep initial setup to 3 steps maximum
+- Allow users to skip non-essential information
+- Provide clear value proposition upfront
+- Enable quick wins within first session
+
+### Core Flows
+- **Booking a Session**: Maximum 3 taps from home screen
+- **Viewing Progress**: Always visible on home screen
+- **Finding Mentors**: Powerful search with smart filters
+- **Managing Schedule**: Integrated calendar view
+
+### Error Prevention
+- Use inline validation for forms
+- Provide clear format examples
+- Confirm destructive actions
+- Save user progress automatically
+
+## Content Guidelines
+
+### Voice and Tone
+- **Professional but Approachable**: Use "you" language
+- **Encouraging**: Focus on growth and possibilities
+- **Clear and Direct**: Avoid jargon and complex terms
+- **Supportive**: Acknowledge challenges and celebrate wins
+
+### Microcopy
+- **CTAs**: Use action verbs ("Book Session", "Start Learning")
+- **Error Messages**: Be specific and helpful
+- **Success Messages**: Be celebratory but brief
+- **Helper Text**: Provide context without overwhelming
+
+## Performance Guidelines
+
+### Loading Performance
+- Target 2 seconds or less for initial page load
+- Use progressive loading for images and content
+- Implement efficient caching strategies
+- Optimize for 3G network conditions
+
+### Animation Performance
+- Use CSS transforms and opacity for smooth animations
+- Keep animations under 300ms for micro-interactions
+- Provide reduced motion preferences
+- Use appropriate easing curves (ease-out for entrances)
+
+## Platform-Specific Considerations
+
+### iOS Guidelines
+- Follow Human Interface Guidelines for navigation
+- Use native iOS icons and interaction patterns
+- Support iOS accessibility features
+- Consider Dynamic Type support
+
+### Android Guidelines
+- Follow Material Design principles where appropriate
+- Support Android accessibility services
+- Use appropriate navigation patterns (bottom nav, drawer)
+- Consider gesture navigation compatibility
+
+## Quality Assurance
+
+### Testing Requirements
+- Test on minimum 3 different screen sizes
+- Verify accessibility with screen readers
+- Test all interactive states (hover, focus, active)
+- Validate form handling and error states
+
+### Review Process
+- Conduct usability testing with target users
+- Review designs with development team for feasibility
+- Validate against brand guidelines
+- Check compliance with accessibility standards

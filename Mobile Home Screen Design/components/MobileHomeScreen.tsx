@@ -1,13 +1,25 @@
+import React, { useState } from "react";
 import { FeatureCard } from "./FeatureCard";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Badge } from "./ui/badge";
-import { Bell, Settings, Search, Video, Clock, TrendingUp, Users, BookOpen, Target } from "lucide-react";
+import { BottomNavigation, SafeAreaBottom } from "./ui/bottom-navigation";
+import { Spinner, ProgressBar } from "./ui/loading-states";
+import { Bell, Settings, Search, Video, Clock, TrendingUp, Users, BookOpen, Target, ChevronRight } from "lucide-react";
 
 export function MobileHomeScreen() {
+  const [activeTab, setActiveTab] = useState("home");
+  const [isLoading, setIsLoading] = useState(false);
+
   const showComingSoon = () => {
     alert("🚀 Coming Soon! This feature is under development.");
+  };
+
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId);
+    // In a real app, this would navigate to different screens
+    showComingSoon();
   };
 
   const quickActions = [
@@ -34,7 +46,7 @@ export function MobileHomeScreen() {
   ];
 
   return (
-    <div className="min-h-screen bg-background flex flex-col max-w-sm mx-auto">
+    <div className="min-h-screen bg-background flex flex-col max-w-sm mx-auto relative">
       {/* Header */}
       <div className="flex items-center justify-between p-4 pt-8">
         <div className="flex items-center space-x-3">
@@ -74,7 +86,7 @@ export function MobileHomeScreen() {
             <h3 className="font-medium">Your Progress</h3>
             <TrendingUp className="h-4 w-4 text-primary" />
           </div>
-          <div className="grid grid-cols-3 gap-4 text-center">
+          <div className="grid grid-cols-3 gap-4 text-center mb-4">
             <div>
               <div className="text-xl font-medium text-primary">8</div>
               <div className="text-xs text-muted-foreground">Sessions</div>
@@ -88,6 +100,13 @@ export function MobileHomeScreen() {
               <div className="text-xs text-muted-foreground">Goal Progress</div>
             </div>
           </div>
+          {/* Goal Progress Bar */}
+          <ProgressBar 
+            value={87} 
+            max={100} 
+            label="Monthly Goal"
+            className="mt-3"
+          />
         </Card>
       </div>
 
@@ -157,15 +176,29 @@ export function MobileHomeScreen() {
       </div>
 
       {/* Bottom Action */}
-      <div className="p-4">
+      <div className="p-4 pb-20">
         <Button 
-          className="w-full bg-primary hover:bg-primary/90" 
+          className="w-full bg-primary hover:bg-primary/90 h-12" 
           onClick={showComingSoon}
+          disabled={isLoading}
         >
-          <Users className="h-4 w-4 mr-2" />
+          {isLoading ? (
+            <Spinner size="sm" className="mr-2" />
+          ) : (
+            <Users className="h-4 w-4 mr-2" />
+          )}
           Book 1-on-1 Session
         </Button>
       </div>
+
+      {/* Bottom Navigation */}
+      <BottomNavigation 
+        activeTab={activeTab}
+        onTabChange={handleTabChange}
+      />
+
+      {/* Safe area for bottom navigation */}
+      <SafeAreaBottom />
     </div>
   );
 }
